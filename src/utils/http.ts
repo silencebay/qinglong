@@ -30,7 +30,7 @@ _request.interceptors.request.use((url, options) => {
   const token = localStorage.getItem(config.authKey);
   if (token) {
     const headers = {
-      Authorization: `Bearer ${token}`,
+      'X-Authorization': `Bearer ${token}`,
     };
     return { url, options: { ...options, headers } };
   }
