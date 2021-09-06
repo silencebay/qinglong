@@ -115,7 +115,7 @@ export function createRandomString(min: number, max: number): string {
 }
 
 export function getToken(req: any) {
-  const authorization = req.header('x-authorization');
+  const { authorization } = req.headers;
   if (authorization && authorization.split(' ')[0] === 'Bearer') {
     return authorization.split(' ')[1];
   }
