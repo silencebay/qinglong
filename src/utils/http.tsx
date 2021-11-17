@@ -94,7 +94,7 @@ const apiWhiteList = [
 _request.interceptors.request.use((_config) => {
   const token = localStorage.getItem(config.authKey);
   if (token && !apiWhiteList.includes(_config.url!)) {
-    _config.headers.Authorization = `Bearer ${token}`;
+    _config.headers['X-Authorization'] = `Bearer ${token}`;
     return _config;
   }
   return _config;
