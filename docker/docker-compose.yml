@@ -3,8 +3,21 @@ services:
     image: whyour/qinglong:latest # 基于 Debian 的版本：whyour/qinglong:debian  
     volumes:
       - ./data:/ql/data
-    ports:
-      - "5700:5700"
     environment:
       QlBaseUrl: '/' # 部署路径非必须，以斜杠开头和结尾，比如 /test/
-    restart: unless-stopped
+    networks: 
+      - internal
+    restart: always
+
+  nginx:
+    image: nginx:alpine
+    volumes: 
+      - ./docker/services/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "0.0.0.0:5700:80"
+    networks: 
+      - internal
+    restart: always
+
+networks: 
+  internal:
