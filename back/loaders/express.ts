@@ -40,6 +40,7 @@ export default ({ app }: { app: Application }) => {
     jwt({
       secret: config.secret,
       algorithms: ['HS384'],
+      getToken: getToken,
     }).unless({
       path: [...config.apiWhiteList, /^\/open\//],
     }),
