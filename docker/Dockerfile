@@ -9,10 +9,11 @@ RUN set -x \
 
 FROM python:3.11-alpine
 
-ARG QL_MAINTAINER="whyour"
+ARG QL_MAINTAINER="silencebay"
 LABEL maintainer="${QL_MAINTAINER}"
+LABEL original_maintainer="whyour"
 ARG QL_URL=https://github.com/${QL_MAINTAINER}/qinglong.git
-ARG QL_BRANCH=develop
+ARG QL_BRANCH=master
 
 ENV PNPM_HOME=/root/.local/share/pnpm \
   PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.local/share/pnpm:/root/.local/share/pnpm/global/5/node_modules \
